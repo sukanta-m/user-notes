@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import {NewsLists} from '../../pages/News/index';
+import NewsLists from '../../../components/Home/container/NewsList';
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 const mockStore = configureMockStore();
@@ -20,9 +20,7 @@ const newss = [
 
 describe('NewsList', () => {
   const props = {
-    fetchNewss: jest.fn(),
-    deleteNews: jest.fn(),
-    createAddress: jest.fn()
+    fetchNewss: jest.fn()
   };
 
   it('should render correctly', () => {
