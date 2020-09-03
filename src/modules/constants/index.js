@@ -1,6 +1,13 @@
 export const FTECH_NOTES_REQUEST = "[notes] fetch notess request";
 export const FTECH_NOTES_SUCCESS = "[notes] fetch notess suceess";
 export const FTECH_NOTES_FAILURE = "[notes] fetch notess failure";
+export const TOGGLE_NOTE_MODAL = "[notes] toggle note modal";
+export const ADD_NOTE_REQUEST = "[note] add note request";
+export const ADD_NOTE_SUCCESS = "[note] add note success";
+export const ADD_NOTE_FAILURE = "[note] add note failed";
+export const UPDATE_NOTE_REQUEST = "[note] update note request";
+export const UPDATE_NOTE_SUCCESS = "[note] update note success";
+export const UPDATE_NOTE_FAILURE = "[note] update note failed";
 
 // user
 export const FTECH_USER_REQUEST = "[user] fetch logedin user";

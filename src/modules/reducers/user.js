@@ -18,7 +18,7 @@ export default (state = initialState, { type, payload }) => {
     case FTECH_USER_SUCCESS:
       return {
         ...state,
-        user: payload.data,
+        user: payload.data.data,
         authenticated: true,
         authenticating: false
       }

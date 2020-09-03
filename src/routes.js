@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
-import { Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from "react-redux";
 import { get } from "lodash";
 import './App.css';
@@ -12,7 +12,7 @@ import Header from "./components/Header";
 
 const { Content } = Layout;
 
-const UserNotes = lazy(() => import("./components/Home"));
+const UserNotes = lazy(() => import("./container/Notes"));
 const Login = lazy(() => import("./components/Login"));
 const Signup = lazy(() => import("./components/Signup"));
 

@@ -1,5 +1,8 @@
 import axios from "./axios";
 
-export const fetchNotesList = ({q = '', page = 0, pageSize = 30}) => {
-  return axios.get(`/search?query=${q}&page=${page}&hitsPerPage=${pageSize}`);
+export const fetchNotes = (tag = "") => {
+  return axios.get(`/notes?tag=${tag}`);
 };
+
+export const addNote = params => axios.post("/notes", params);
+export const updateNote = params => axios.put(`/notes/${params.id}`, params);
