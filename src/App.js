@@ -1,14 +1,11 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { Layout } from "antd";
-import { Route, Switch } from 'react-router-dom'
-import './App.css';
 import ErrorHandler from "./components/sharedComponents/ErrorHandler";
-import Progress from "./components/sharedComponents/Progress";
+
+import Router from "./routes";
 
 import styled from "styled-components";
 import 'antd/dist/antd.css'
-
-const HackerNews = lazy(() => import("./components/Home"));
 
 function App() {
   return (
@@ -22,17 +19,6 @@ function App() {
   );
 }
 
-const Router = () => {
-  return (
-    <Suspense fallback={<Progress />}>
-      <Switch>
-        <Route exact path="/" component={HackerNews} />
-      </Switch>
-    </Suspense>
-  );
-};
-
-
 const StyledLayout = styled(Layout)`
   background: white;
   .fixed-header {
@@ -43,7 +29,7 @@ const StyledLayout = styled(Layout)`
 
 const Wrapper = styled.div`
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: auto;
 
   h1 {

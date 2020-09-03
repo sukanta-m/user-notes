@@ -1,14 +1,14 @@
 
-import { fetchNewsAction } from "../../modules/actions/news";
+import { fetchNotesAction } from "../../modules/actions/notes";
 
 import { connect } from "react-redux";
 import { get } from "lodash";
 
-import HackerNews from "./container/NewsList";
+import UserNotes from "./container/UserNotes";
 
 export default connect((state) => ({
-  fetching: get(state, "news.fetching", false),
-  news: get(state, "news.lists", [])
+  fetching: get(state, "notes.fetching", false),
+  notes: get(state, "notes.lists", [])
 }), {
-  fetchNews: fetchNewsAction
-})(HackerNews);
+  fetchNotes: fetchNotesAction
+})(UserNotes);

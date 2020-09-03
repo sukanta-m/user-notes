@@ -1,5 +1,8 @@
-import newsReducer from "./news";
+import notesReducer from "./notes";
+import userReducer from "./user";
+import user from "./user";
 
 export default {
-  news: newsReducer
+  notes: notesReducer,
+  user: userReducer
 };

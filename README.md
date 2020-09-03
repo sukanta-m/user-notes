@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `env variables`
-add env variable ```REACT_API_HOST_URL=https://hn.algolia.com/api/v1``` in `.env` file in root dir<br />
+add env variable ```REACT_API_HOST_URL=<api host base url>``` in `.env` file in root dir<br />
 
 ### `yarn start`
 
@@ -69,4 +69,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# hacker-news
+# user-notes

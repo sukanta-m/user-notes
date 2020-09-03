@@ -1,13 +1,13 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import NewsLists from '../../../components/Home/container/NewsList';
+import NotesLists from '../../../components/Home/container/NotesList';
 import { Provider } from "react-redux";
 import configureMockStore from "redux-mock-store";
 const mockStore = configureMockStore();
 const store = mockStore({});
 
-const newss = [
+const notess = [
   {
     "name": "SUkanta Mangal",
     "age": 32,
@@ -18,13 +18,13 @@ const newss = [
   }
 ];
 
-describe('NewsList', () => {
+describe('NotesList', () => {
   const props = {
-    fetchNewss: jest.fn()
+    fetchNotess: jest.fn()
   };
 
   it('should render correctly', () => {
-    const component = mount(<MemoryRouter><NewsLists newss={newss} {...props}/></MemoryRouter>);
-    expect(component.find("NewsLists")).not.toBeNull();
+    const component = mount(<MemoryRouter><NotesLists notess={notess} {...props}/></MemoryRouter>);
+    expect(component.find("NotesLists")).not.toBeNull();
   });
 });

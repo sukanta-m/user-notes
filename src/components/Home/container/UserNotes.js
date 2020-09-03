@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { get } from "lodash";
 import { Spin, Table, message } from "antd";
 import { PlusCircleOutlined } from "@ant-design/icons";
 
@@ -7,20 +9,24 @@ import { StyledActionsWrapper } from "../style";
 
 import styled from "styled-components";
 
-const HackerNews = ({}) => {
+const UserNotes = ({}) => {
   return (
-    <div>Hacker news</div>
+    <div>User Notes</div>
   )
 };
 
 PropTypes.defaultProps = {
   fetching: false,
-  news: []
+  notes: []
 };
 
-HackerNews.propTypes = {
+UserNotes.propTypes = {
   fetching: PropTypes.bool,
-  news: PropTypes.arrayOf(PropTypes.object),
+  notes: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default HackerNews;
+export default connect(state => ({
+  notes: get(state, "notes.lists")
+}), {
+
+})(UserNotes);

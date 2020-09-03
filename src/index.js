@@ -24,7 +24,7 @@ ReactDOM.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>
-  </ConnectedRouter>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
