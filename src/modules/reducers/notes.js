@@ -1,6 +1,7 @@
 import {
   FTECH_NOTES_REQUEST, FTECH_NOTES_SUCCESS, FTECH_NOTES_FAILURE, TOGGLE_NOTE_MODAL,
-  ADD_NOTE_REQUEST, ADD_NOTE_SUCCESS, ADD_NOTE_FAILURE, UPDATE_NOTE_REQUEST, UPDATE_NOTE_SUCCESS, UPDATE_NOTE_FAILURE
+  ADD_NOTE_REQUEST, ADD_NOTE_SUCCESS, ADD_NOTE_FAILURE, UPDATE_NOTE_REQUEST, UPDATE_NOTE_SUCCESS, UPDATE_NOTE_FAILURE,
+  DELETE_NOTE_REQUEST, DELETE_NOTE_SUCCESS, DELETE_NOTE_FAILURE
 } from "../constants";
 
 const initialState = {
@@ -66,7 +67,25 @@ export default (state = initialState, { type, payload }) => {
       })
       return {
         ...state,
-        lists
+        lists,
+        creating: false
+      }
+    case UPDATE_NOTE_FAILURE:
+      return {
+        ...state,
+        creating: false
+      }
+    case DELETE_NOTE_REQUEST:
+      return {
+        ...state,
+        deleting: true
+      }
+
+    case DELETE_NOTE_SUCCESS:
+      return {
+        ...state,
+        deleting: false,
+        lists: state.lists.filter(note => parseInt(note.id, 10) !== parseInt(payload, 10))
       }
     default:
       return state

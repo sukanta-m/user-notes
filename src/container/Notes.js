@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { get } from "lodash";
-import { Spin, Empty, message } from "antd";
-import { fetchNotesAction, toggleNoteModalAction, addNoteAction, updateNoteAction } from "../modules/actions/notes";
-
+import { Spin, Empty, message, Modal } from "antd";
+import { fetchNotesAction, toggleNoteModalAction, addNoteAction, updateNoteAction, deleteNoteAction } from "../modules/actions/notes";
+import {
+  ExclamationCircleOutlined
+} from '@ant-design/icons';
 import styled from "styled-components";
 
 import Notes from "../components/Notes";
@@ -17,6 +19,7 @@ const UserNotes = ({
   toogleNoteModal,
   addNote,
   updateNote,
+  deleteNote,
   creating,
   fetching
 }) => {
@@ -25,15 +28,29 @@ const UserNotes = ({
     fetchNotes();
   }, []);
 
-  const handleCancel = () => toogleNoteModal(false);
+  const handleCancel = () => {
+    toogleNoteModal(false);
+    setEditabeNoteId();
+  }
+
   const onEdit = id => {
     toogleNoteModal(true);
     setEditabeNoteId(id);
   };
-  const onDelete = id => {
 
+  const onDelete = id => {
+    Modal.confirm({
+      title: 'Confirm',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Are you sure ?',
+      onOk: () => deleteNote(id),
+      onCancel: () => Modal.destroyAll()
+    });
   };
 
+  const onUpdateNote = params => {
+    updateNote(params).then(() => setEditabeNoteId());
+  }
   if (fetching) {
     return <Spin spinning/>
   }
@@ -47,7 +64,7 @@ const UserNotes = ({
         <NoteForm
           handleCancel={handleCancel}
           addNote={addNote}
-          updateNote={updateNote}
+          updateNote={onUpdateNote}
           loading={creating}
           note={note?.attributes || {}}
         />
@@ -76,5 +93,6 @@ export default connect(state => ({
   fetchNotes: fetchNotesAction,
   toogleNoteModal: toggleNoteModalAction,
   addNote: addNoteAction,
-  updateNote: updateNoteAction
+  updateNote: updateNoteAction,
+  deleteNote: deleteNoteAction
 })(UserNotes);

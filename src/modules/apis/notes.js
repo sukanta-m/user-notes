@@ -6,3 +6,4 @@ export const fetchNotes = (tag = "") => {
 
 export const addNote = params => axios.post("/notes", params);
 export const updateNote = params => axios.put(`/notes/${params.id}`, params);
+export const deleteNote = id => axios.delete(`/notes/${id}`);

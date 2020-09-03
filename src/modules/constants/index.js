@@ -8,6 +8,9 @@ export const ADD_NOTE_FAILURE = "[note] add note failed";
 export const UPDATE_NOTE_REQUEST = "[note] update note request";
 export const UPDATE_NOTE_SUCCESS = "[note] update note success";
 export const UPDATE_NOTE_FAILURE = "[note] update note failed";
+export const DELETE_NOTE_REQUEST = "[note] delete note request";
+export const DELETE_NOTE_SUCCESS = "[note] delete note success";
+export const DELETE_NOTE_FAILURE = "[note] delete note failed";
 
 // user
 export const FTECH_USER_REQUEST = "[user] fetch logedin user";

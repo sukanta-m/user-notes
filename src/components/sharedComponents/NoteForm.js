@@ -16,7 +16,7 @@ const NoteForm = ({
   addNote,
   updateNote,
   loading,
-  note: { id, title, body, tags }
+  note: { id, title, body, tags = [] }
 }) => {
   const [modifiedBody, setBody] = useState(body);
 
