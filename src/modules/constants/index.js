@@ -11,6 +11,7 @@ export const UPDATE_NOTE_FAILURE = "[note] update note failed";
 export const DELETE_NOTE_REQUEST = "[note] delete note request";
 export const DELETE_NOTE_SUCCESS = "[note] delete note success";
 export const DELETE_NOTE_FAILURE = "[note] delete note failed";
+export const NOTE_TAGS_SUCCESS = "[note] tags fetch";
 
 // user
 export const FTECH_USER_REQUEST = "[user] fetch logedin user";
@@ -22,3 +23,5 @@ export const USER_LOGIN_FAILURE = "[login] failed";
 export const USER_REGISTER_REQUEST = "[register] request";
 export const USER_REGISTER_SUCCESS = "[register] success";
 export const USER_REGISTER_FAILURE = "[register] failed";
+export const USER_LOGOUT_SUCCESS = "[user] logout success";
+export const USER_LOGOUT_FAILURE = "[user] logout failed";

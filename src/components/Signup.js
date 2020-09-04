@@ -32,7 +32,7 @@ const SignupForm = ({
   };
 
   return (
-    <Card style={{ width: 640, margin: "auto" }}>
+    <Card style={{ width: 640, margin: "auto" }} title="Create Account">
       <Form
         {...layout}
         name="basic"
@@ -78,8 +78,8 @@ const SignupForm = ({
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button type="primary" htmlType="submit" style={{width: "100%"}}>
+            Create
           </Button>
         </Form.Item>
       </Form>

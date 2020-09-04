@@ -69,7 +69,7 @@ const UserNotes = ({
           note={note?.attributes || {}}
         />
       )}
-      <Notes notes={notes} onEdit={onEdit} onDelete={onDelete} />
+      {notes.length > 0 && <Notes notes={notes} onEdit={onEdit} onDelete={onDelete} />}
     </div>
   )
 };

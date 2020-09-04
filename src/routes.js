@@ -31,7 +31,8 @@ const PrivateRoute = ({ component, authenticating, authenticated, ...options }) 
 const Router = ({
   fetchUser,
   authenticating,
-  authenticated
+  authenticated,
+  tags
 }) => {
   const [collapsed, setCollapsed] = useState(false);
 
@@ -53,7 +54,7 @@ const Router = ({
   return (
     <Suspense fallback={<Progress />}>
       <StyledLayout>
-        {authenticated && <Sidebar collapsed={collapsed}/>}
+        {authenticated && <Sidebar collapsed={collapsed} tags={tags}/>}
         <Layout className="site-layout">
           <Header collapsed={collapsed} toggleSidebar={toggleSidebar} authenticated={authenticated} />
           <StyledContent
@@ -101,6 +102,7 @@ const StyledContent = styled(Content)`
 export default connect(state => ({
   authenticating: get(state, "user.authenticating", true),
   authenticated: get(state, "user.authenticated", false),
+  tags: get(state, "notes.tags")
 }), {
   fetchUser: fetchUserAction
 })(Router);

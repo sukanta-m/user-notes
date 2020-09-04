@@ -1,8 +1,9 @@
-import { fetchNotes, addNote, updateNote, deleteNote } from "../apis/notes";
+import { fetchNotes, addNote, updateNote, deleteNote, fetchTags } from "../apis/notes";
 import {
   FTECH_NOTES_FAILURE, FTECH_NOTES_SUCCESS, FTECH_NOTES_REQUEST, TOGGLE_NOTE_MODAL,
   ADD_NOTE_REQUEST, ADD_NOTE_SUCCESS, ADD_NOTE_FAILURE, UPDATE_NOTE_REQUEST, UPDATE_NOTE_SUCCESS, UPDATE_NOTE_FAILURE,
-  DELETE_NOTE_REQUEST, DELETE_NOTE_SUCCESS, DELETE_NOTE_FAILURE
+  DELETE_NOTE_REQUEST, DELETE_NOTE_SUCCESS, DELETE_NOTE_FAILURE,
+  NOTE_TAGS_SUCCESS
  } from "../constants";
  import { notification } from "antd";
  
@@ -10,7 +11,10 @@ export const fetchNotesAction = (params) => {
   return dispatch => {
     dispatch({ type: FTECH_NOTES_REQUEST })
     return fetchNotes(params)
-    .then(response => dispatch({type: FTECH_NOTES_SUCCESS, payload: response.data}))
+    .then(response => {
+      dispatch(fetchTagsAction());
+      return dispatch({type: FTECH_NOTES_SUCCESS, payload: response.data});
+    })
     .catch(error => dispatch({type: FTECH_NOTES_FAILURE, payload: error}));
   }
 };
@@ -20,6 +24,7 @@ export const addNoteAction = params => {
     dispatch({ type: ADD_NOTE_REQUEST })
     return addNote(params)
     .then(response => {
+      dispatch(fetchTagsAction());
       dispatch(toggleNoteModalAction(false));
       notification.success({
         message: 'Note created successfully',
@@ -42,6 +47,7 @@ export const updateNoteAction = params => {
     dispatch({ type: UPDATE_NOTE_REQUEST })
     return updateNote(params)
     .then(response => {
+      dispatch(fetchTagsAction());
       dispatch(toggleNoteModalAction(false));
       notification.success({
         message: 'Note updated successfully',
@@ -79,5 +85,9 @@ export const deleteNoteAction = id => {
     });
   }
 }
+
+export const fetchTagsAction = () =>
+  dispatch => fetchTags()
+  .then(response => dispatch({type: NOTE_TAGS_SUCCESS, payload: response}));
 
 export const toggleNoteModalAction = value => dispatch => dispatch({ type: TOGGLE_NOTE_MODAL, payload: value });

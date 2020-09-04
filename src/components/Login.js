@@ -61,8 +61,8 @@ const LoginForm = ({
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button type="primary" htmlType="submit" style={{width: "100%"}}>
+            Login
           </Button>
         </Form.Item>
       </Form>
