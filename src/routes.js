@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { Route, Switch, useHistory } from 'react-router-dom'
 import { connect } from "react-redux";
 import { get } from "lodash";
 import './App.css';
-import { Spin, Layout } from "antd";
+import { Layout } from "antd";
 import Progress from "./components/sharedComponents/Progress";
 import { fetchUserAction } from "./modules/actions/user";
 import styled from "styled-components";

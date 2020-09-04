@@ -12,7 +12,6 @@ import styled from "styled-components";
 
 import { toggleNoteModalAction } from "../modules/actions/notes";
 import { logOutAction } from "../modules/actions/user";
-import { get } from "lodash";
 
 const { Header: HeaderLayout } = Layout;
 

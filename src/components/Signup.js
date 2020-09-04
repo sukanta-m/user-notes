@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Form, Input, Button, Card } from 'antd';
+import { Form, Input, Button } from 'antd';
 
 import CardWrapper from "./sharedComponents/CardWrapper";
 import { registerAction } from "../modules/actions/user";

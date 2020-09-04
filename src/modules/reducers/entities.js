@@ -1,4 +1,3 @@
-import { groupBy } from "lodash";
 const initialState = {
   user: {}
 };

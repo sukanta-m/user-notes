@@ -1,13 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { get } from "lodash";
-import { Spin, Empty, message, Modal } from "antd";
+import { Spin, Empty, Modal } from "antd";
 import { fetchNotesAction, toggleNoteModalAction, addNoteAction, updateNoteAction, deleteNoteAction } from "../modules/actions/notes";
 import {
   ExclamationCircleOutlined
 } from '@ant-design/icons';
-import styled from "styled-components";
 
 import Notes from "../components/Notes";
 import NoteForm from "../components/sharedComponents/NoteForm";
