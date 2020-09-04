@@ -1,11 +1,26 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to User Notes
 
+This is a simple note storage application using Ruby on Rails for api service. For demo of this application please follow this link [Note Storage Demo Application](https://note-storage.herokuapp.com).
+
+## Application Description
+- User can signup into this application by providing email, password and password confirmation.
+- User can login into this application by providing email and password.
+- User can create note by clicking *New Note* button.
+- User can edit note by clicking *Edit* link of respective note.
+- User can delete note by clicking *Delete* link of respective note.
+- User can search note by using search form.
+- User can search note by clicking tags.
+- User can logout from application by clicking *Log Out* link at the navbar.
+
+## Technical Stack
+- react 16.13
+- es6
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `env variables`
-add env variable ```REACT_API_HOST_URL=<api host base url>``` in `.env` file in root dir<br />
+add env variable ```REACT_APP_API_URL=<api host base url>``` in `.env` file in root dir<br />
 
 ### `yarn start`
 

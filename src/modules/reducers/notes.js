@@ -10,7 +10,8 @@ const initialState = {
   tags: [],
   filter: {
     by: "authorByMe",
-    tags: []
+    tags: [],
+    search: ""
   }
 }
 

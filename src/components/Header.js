@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Layout, Button } from "antd";
+import { Layout, Button, Input } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -10,17 +10,20 @@ import {
 } from '@ant-design/icons';
 import styled from "styled-components";
 
-import { toggleNoteModalAction } from "../modules/actions/notes";
+import { toggleNoteModalAction, updateSearchAction } from "../modules/actions/notes";
 import { logOutAction } from "../modules/actions/user";
 
 const { Header: HeaderLayout } = Layout;
+const { Search } = Input;
 
 const Header = ({
   collapsed,
   toggleSidebar,
   authenticated,
   toggleNoteModal,
-  logOut
+  logOut,
+  searchNote,
+  filter
 }) => {
   const onAddNote = () => toggleNoteModal(true);
 
@@ -40,6 +43,10 @@ const Header = ({
           </StyledLink>
         </div>
       }
+      {authenticated && <StyledSearch
+        placeholder="Search notes"
+        onSearch={value => searchNote({...filter, search: value})}
+      />}
       {authenticated && (
         <StyledRightMenu>
           <Button type="primary" onClick={onAddNote}><PlusCircleFilled/>Add Note</Button>
@@ -71,7 +78,16 @@ text-align: right;
 padding-right: 20px;
 `;
 
-export default connect(null, {
+const StyledSearch = styled(Search)`
+width: 400px;
+height: 40px;
+margin: 10px 0;
+`;
+
+export default connect(state => ({
+  filter: state.notes.filter
+}), {
   toggleNoteModal: toggleNoteModalAction,
-  logOut: logOutAction
+  logOut: logOutAction,
+  searchNote: updateSearchAction
 })(Header);
