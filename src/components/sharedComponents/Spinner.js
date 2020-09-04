@@ -3,9 +3,9 @@ import { Spin } from "antd";
 
 import styled from "styled-components";
 
-const Spinner = ({ size = "large" }) => {
+const Spinner = ({ size = "large", height }) => {
   return (
-    <SpinnerWrapper>
+    <SpinnerWrapper height={height}>
       <Spin size={size} />
     </SpinnerWrapper>
   )
@@ -15,7 +15,8 @@ const SpinnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: ${({height}) => height};
+  width: 100%;
 `;
 
 export default Spinner;

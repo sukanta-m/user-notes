@@ -11,6 +11,7 @@ import {
 
 import Notes from "../components/Notes";
 import NoteForm from "../components/sharedComponents/NoteForm";
+import Spinner from "../components/sharedComponents/Spinner";
 
 const UserNotes = ({
   fetchNotes,
@@ -52,7 +53,7 @@ const UserNotes = ({
     updateNote(params).then(() => setEditabeNoteId());
   }
   if (fetching) {
-    return <Spin spinning/>
+    return <Spinner size="small"/>
   }
 
   const note = notes.find(({id}) => parseInt(id, 10) === parseInt(editableNoteId, 10));

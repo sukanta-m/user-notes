@@ -45,7 +45,7 @@ const Router = ({
   const toggleSidebar = () => setCollapsed(prevCollapsed => !prevCollapsed);
 
   if (authenticating && !authenticated) {
-    return <Spinner size="large"/>;
+    return <Spinner size="large" height="100vh"/>;
   }
 
   const authProps = {
