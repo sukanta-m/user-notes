@@ -32,7 +32,7 @@
   },
   "scripts": {
     "dev": "PORT=3001 react-app-rewired start",
-    "start": "env-cmd -f ./.env react-scripts start",
+    "start": "react-scripts start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
