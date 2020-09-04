@@ -51,6 +51,12 @@ export default (state = initialState, { type, payload }) => {
         authenticated: true,
         authenticating: false
       }
+    case USER_LOGIN_FAILURE:
+      return {
+        ...state,
+        authenticating: false,
+        authenticated: false
+      }
     case USER_LOGOUT_FAILURE: {
       return {
         ...state,

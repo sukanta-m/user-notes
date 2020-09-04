@@ -9,6 +9,7 @@ import { fetchUserAction } from "./modules/actions/user";
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
+import Spinner from "./components/sharedComponents/Spinner";
 
 const { Content } = Layout;
 
@@ -43,7 +44,7 @@ const Router = ({
   const toggleSidebar = () => setCollapsed(prevCollapsed => !prevCollapsed);
 
   if (authenticating && !authenticated) {
-    return <Spin size="large" />;
+    return <Spinner size="large"/>;
   }
 
   const authProps = {

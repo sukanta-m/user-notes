@@ -27,7 +27,7 @@ export const login = data => {
       }).catch(error => {
         console.log(error)
         notification.error({
-          message: 'Logout successfully',
+          message: 'Failed to login',
           description: ''
         });
         return dispatch({type: USER_LOGIN_FAILURE, payload: error});
