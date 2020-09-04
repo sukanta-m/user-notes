@@ -2,7 +2,7 @@ import axios from "axios";
 
 const getAuthToken = () => {
   const token =  window.sessionStorage.getItem('jwt');
-  return { Authorization: `${token}` };
+  return { Authorization: `Bearer ${token}` };
 }
 
 export default () => axios.create({
