@@ -32,10 +32,10 @@ const Sidebar = ({ collapsed, tags, filter, updateFilter, user: { firstName, las
     <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg">
       <StyledLogo collapsed={collapsed}>
         <div className="logo" >
-          <Tooltip title="Company">
+          <Tooltip title="User notes app">
             <img src={require("../assets/images/company-logo.png")} alt="company"/>
           </Tooltip>
-          {!collapsed && <span>Company</span>}
+          {!collapsed && <span>User notes app</span>}
         </div>
       </StyledLogo>
       <div style={{marginTop: "60px"}}>
