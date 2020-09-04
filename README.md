@@ -20,7 +20,7 @@ This is a simple note storage application using Ruby on Rails for api service. F
 In the project directory, you can run:
 
 ### `env variables`
-add env variable ```REACT_APP_API_URL=<api host base url>``` in `.env` file in root dir<br />
+add env variable ```REACT_APP_API_URL=<api host base url>```<br />
 
 ### `yarn start`
 
