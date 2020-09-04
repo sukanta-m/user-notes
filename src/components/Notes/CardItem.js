@@ -34,21 +34,21 @@ const CardItem = ({ note, user, onEdit, onDelete }) => {
       </Menu.Item>
     </Menu>
   );
-
+  
   return (
-    <StyledCard>
+    <StyledCard isMobile={window.isMobile}>
       <Row>
-        <Col span={1}>
-          <Avatar size="large" icon={<UserOutlined />} />
+        <Col span={window.isMobile ? 4 : 1}>
+          <Avatar size={window.isMobile ? "small" : "large"} icon={<UserOutlined />} />
         </Col>
-        <Col span={23}>
+        <Col span={window.isMobile ? 20 : 23}>
           <StyledMetaData>
             <div style={{display: "flex", flexDirection: "column"}}>
               <span>{`${firstName} ${lastName}`}</span>
               <span className="time">{moment(note.createdAt).fromNow()}</span>
             </div>
             <Dropdown overlay={menu}>
-              <MoreOutlined style={{fontSize: "25px", transform: "rotate(90deg)"}}/>
+              <MoreOutlined style={{fontSize: window.isMobile ? "18px" : "25px", transform: "rotate(90deg)"}}/>
             </Dropdown>
           </StyledMetaData>
           <StyledTitle>
@@ -82,11 +82,14 @@ const StyledTitle = styled.div`
 `;
 
 const StyledBody = styled.div`
-margin: 5px 0;
+  margin: 5px 0;
 `;
 
 const StyledCard = styled(Card)`
-margin-bottom: 20px!important;
+  margin-bottom: 20px!important;
+  .ant-card-body {
+    padding: ${({isMobile}) => isMobile ? "10px" : "24px"};
+  }
 `;
 
 const StyledShowMoreLink = styled(Button)`

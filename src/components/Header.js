@@ -26,12 +26,13 @@ const Header = ({
   filter
 }) => {
   const onAddNote = () => toggleNoteModal(true);
+  const isMobile = window.isMobile;
 
   return (
     <StyledHeaderLayout className="site-layout-background" collapsed={collapsed} authenticated={authenticated} >
       {authenticated && React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
         className: 'trigger',
-        onClick: toggleSidebar,
+        onClick: toggleSidebar
       })}
       {!authenticated && 
         <div style={{width: "100%", textAlign: "right"}}>
@@ -46,11 +47,12 @@ const Header = ({
       {authenticated && <StyledSearch
         placeholder="Search notes"
         onSearch={value => searchNote({...filter, search: value})}
+        isMobile={isMobile}
       />}
       {authenticated && (
-        <StyledRightMenu>
-          <Button type="primary" onClick={onAddNote}><PlusCircleFilled/>Add Note</Button>
-          <div onClick={logOut} style={{display: "flex"}}><LogoutOutlined style={{fontSize: "25px", marginLeft: "20px"}} /></div>
+        <StyledRightMenu isMobile={isMobile}>
+          <StyledAddButton type="primary" onClick={onAddNote} isMobile={isMobile}>{window.isMobile ? <PlusCircleFilled/> : <><PlusCircleFilled/>Add Note</>}</StyledAddButton>
+          <div onClick={logOut} style={{display: "flex"}}><LogoutOutlined style={{fontSize: window.isMobile ? "18px" :"25px", marginLeft: window.isMobile ? "10px" : "20px"}} /></div>
         </StyledRightMenu>
       )}
     </StyledHeaderLayout>
@@ -67,21 +69,27 @@ const StyledHeaderLayout = styled(HeaderLayout)`
 `;
 
 const StyledRightMenu = styled.div`
-  margin-right: 20px;
+  margin-right: ${({isMobile}) => isMobile ? "10px" : "20px"};
   display: flex;
   align-items: center;
 `;
 
 const StyledLink = styled(Link)`
-width: 100%;
-text-align: right;
-padding-right: 20px;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
 `;
 
 const StyledSearch = styled(Search)`
-width: 400px;
-height: 40px;
-margin: 10px 0;
+  width: 400px;
+  height: ${({isMobile}) => isMobile ? "32px" : "40px"};
+  margin: ${({isMobile}) => isMobile ? "15px 0" : "10px 0"};
+`;
+
+const StyledAddButton = styled(Button)`
+  height: ${({isMobile}) => isMobile ? "32px" : "29px"};
+  padding: ${({isMobile}) => isMobile ? "4px 7px" : "4px 15px"};
+  margin-left: 10px;
 `;
 
 export default connect(state => ({

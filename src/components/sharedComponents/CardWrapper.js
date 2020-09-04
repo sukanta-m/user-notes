@@ -16,6 +16,9 @@ const StyledCard = styled(Card)`
     font-size: 20px;
     font-weight: bold;
   }
+  @media only screen and (max-width: 676px) {
+    width: auto!important;
+  }
 `;
 
 export default CardWrapper;

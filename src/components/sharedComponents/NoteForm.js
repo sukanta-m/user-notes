@@ -12,6 +12,7 @@ const NoteForm = ({
   note: { id, title, body, tags = [] },
   tags: allTags = []
 }) => {
+  console.log(loading)
   const [modifiedBody, setBody] = useState(body);
 
   const onFinish = values => {
@@ -43,7 +44,7 @@ const NoteForm = ({
       onOk={addNote}
       onCancel={handleCancel}
       footer={false}
-      width={"70%"}
+      width={window.isMobile ? "100%" : "70%"}
     >
       <Form
         onFinish={onFinish}

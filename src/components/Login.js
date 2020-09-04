@@ -10,9 +10,15 @@ const layout = {
   labelCol: { span: 4 },
   wrapperCol: { span: 20 },
 };
-const tailLayout = {
+let tailLayout = {
   wrapperCol: { offset: 4, span: 20 },
 };
+
+if (window.isMobile) {
+  tailLayout = {
+    wrapperCol: { span: 24 }
+  }
+}
 
 const LoginForm = ({
   login,

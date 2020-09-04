@@ -56,7 +56,8 @@ export default (state = initialState, { type, payload }) => {
     case ADD_NOTE_FAILURE:
       return {
         ...state,
-        error: payload.error
+        error: payload.error,
+        creating: false
       }
     case UPDATE_NOTE_REQUEST:
       return {

@@ -55,13 +55,14 @@ const Router = ({
 
   return (
     <Suspense fallback={<Progress />}>
-      <StyledLayout>
+      <StyledLayout isMobile={window.isMobile}>
         {authenticated && <Sidebar collapsed={collapsed} tags={tags}/>}
         <Layout className="site-layout">
           <Header collapsed={collapsed} toggleSidebar={toggleSidebar} authenticated={authenticated} />
           <StyledContent
             className="site-layout-background"
             authenticated={authenticated}
+            isMobile={window.isMobile}
           >
             <Switch>
               <Route path="/login" render={props => <Login {...props} authenticated={authenticated}/>} />
@@ -79,9 +80,9 @@ const StyledLayout = styled(Layout)`
   .site-layout-background {
     background: #fff;
     .trigger {
-      font-size: 18px;
+      font-size: ${({isMobile}) => isMobile ? "16px" : "18px"};
       line-height: 64px;
-      padding: 0 24px;
+      padding: ${({isMobile}) => isMobile ? "0 7px" : "0 24px"};
       cursor: pointer;
       transition: color 0.3s;
       &:hover {
@@ -98,8 +99,8 @@ const StyledLayout = styled(Layout)`
 `;
 
 const StyledContent = styled(Content)`
-  margin: 88px 16px 24px 16px;
-  padding: 24px;
+  margin: ${({isMobile}) => isMobile ? "88px 5px 24px 5px" : "88px 16px 24px 16px"};
+  padding: ${({isMobile}) => isMobile ? "5px" : "24px"};
   min-height: 100vh;
   background: ${({authenticated}) => !authenticated && "#f0f2f5!important"};
 `;

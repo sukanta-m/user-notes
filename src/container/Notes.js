@@ -88,7 +88,7 @@ UserNotes.propTypes = {
 export default connect(state => ({
   notes: get(state, "notes.lists"),
   showNoteModal: get(state, "notes.showNoteModal", false),
-  creating: get(state, "notes.fetching"),
+  creating: get(state, "notes.creating"),
   fetching: get(state, "notes.fetching")
 }), {
   fetchNotes: fetchNotesAction,
