@@ -12,6 +12,7 @@ export const DELETE_NOTE_REQUEST = "[note] delete note request";
 export const DELETE_NOTE_SUCCESS = "[note] delete note success";
 export const DELETE_NOTE_FAILURE = "[note] delete note failed";
 export const NOTE_TAGS_SUCCESS = "[note] tags fetch";
+export const UPDATE_NOTES_FILTER = "[note] update filter";
 
 // user
 export const FTECH_USER_REQUEST = "[user] fetch logedin user";

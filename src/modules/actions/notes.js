@@ -3,14 +3,14 @@ import {
   FTECH_NOTES_FAILURE, FTECH_NOTES_SUCCESS, FTECH_NOTES_REQUEST, TOGGLE_NOTE_MODAL,
   ADD_NOTE_REQUEST, ADD_NOTE_SUCCESS, ADD_NOTE_FAILURE, UPDATE_NOTE_REQUEST, UPDATE_NOTE_SUCCESS, UPDATE_NOTE_FAILURE,
   DELETE_NOTE_REQUEST, DELETE_NOTE_SUCCESS, DELETE_NOTE_FAILURE,
-  NOTE_TAGS_SUCCESS
+  NOTE_TAGS_SUCCESS, UPDATE_NOTES_FILTER
  } from "../constants";
  import { notification } from "antd";
  
-export const fetchNotesAction = (params) => {
+export const fetchNotesAction = tags => {
   return dispatch => {
     dispatch({ type: FTECH_NOTES_REQUEST })
-    return fetchNotes(params)
+    return fetchNotes(tags)
     .then(response => {
       dispatch(fetchTagsAction());
       return dispatch({type: FTECH_NOTES_SUCCESS, payload: response.data});
@@ -91,3 +91,7 @@ export const fetchTagsAction = () =>
   .then(response => dispatch({type: NOTE_TAGS_SUCCESS, payload: response}));
 
 export const toggleNoteModalAction = value => dispatch => dispatch({ type: TOGGLE_NOTE_MODAL, payload: value });
+export const updateFilterAction = filter => dispatch => {
+  dispatch(fetchNotesAction(filter.tags));
+  return dispatch({ type: UPDATE_NOTES_FILTER, payload: filter });
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Form, Modal, Button, Input, Select } from "antd";
 import CKEditor from 'ckeditor4-react';
 import styled from "styled-components";
@@ -8,7 +9,8 @@ const NoteForm = ({
   addNote,
   updateNote,
   loading,
-  note: { id, title, body, tags = [] }
+  note: { id, title, body, tags = [] },
+  tags: allTags = []
 }) => {
   const [modifiedBody, setBody] = useState(body);
 
@@ -32,6 +34,7 @@ const NoteForm = ({
   };
 
   const onChangeBody = evt => setBody(evt.editor.getData());
+  const tagOptions = allTags.map(tag => ({label: tag, value: tag}))
 
   return (
     <Modal
@@ -71,7 +74,7 @@ const NoteForm = ({
           name="tagList"
           rules={[{ required: true, message: 'Please enter tags!' }]}
         >
-          <Select mode="tags" style={{ width: '100%' }} />
+          <Select mode="tags" style={{ width: '100%' }} options={tagOptions} getPopupContainer={node => node.parentNode}/>
         </Form.Item>
         <StyledFooter>
           <Button key="back" onClick={handleCancel}>
@@ -93,4 +96,4 @@ button {
 }
 `;
 
-export default NoteForm;
+export default connect(state => ({tags: state.notes.tags}))(NoteForm);
