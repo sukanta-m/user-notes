@@ -24,13 +24,13 @@ export const login = data => {
         const { auth_token } = response.data;
         window.sessionStorage.setItem("jwt", auth_token);
         return dispatch({type: USER_LOGIN_SUCCESS, payload: response});
-      }).catch(error => {
-        console.log(error)
+      }).catch(({response}) => {
+        const msg = response.data.errors;
         notification.error({
-          message: 'Failed to login',
+          message: msg,
           description: ''
         });
-        return dispatch({type: USER_LOGIN_FAILURE, payload: error});
+        return dispatch({type: USER_LOGIN_FAILURE, payload: msg});
       });
   }
 }
@@ -44,12 +44,13 @@ export const registerAction = data => {
         window.sessionStorage.setItem("jwt", auth_token);
         dispatch({type: USER_REGISTER_SUCCESS, payload: response})
       })
-      .catch(error => {
+      .catch(({response}) => {
+        const msg = response.data.errors;
         notification.error({
-          message: 'Failed to create account',
+          message: msg,
           description: ''
         });
-        return dispatch({type: USER_REGISTER_FAILURE, payload: error});
+        return dispatch({type: USER_REGISTER_FAILURE, payload: msg});
       });
   }
 }

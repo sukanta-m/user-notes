@@ -60,6 +60,7 @@ const Router = ({
           <Header collapsed={collapsed} toggleSidebar={toggleSidebar} authenticated={authenticated} />
           <StyledContent
             className="site-layout-background"
+            authenticated={authenticated}
           >
             <Switch>
               <Route path="/login" render={props => <Login {...props} authenticated={authenticated}/>} />
@@ -98,6 +99,7 @@ const StyledContent = styled(Content)`
   margin: 88px 16px 24px 16px;
   padding: 24px;
   min-height: 100vh;
+  background: ${({authenticated}) => !authenticated && "#f0f2f5!important"};
 `;
 
 export default connect(state => ({

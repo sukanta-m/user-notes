@@ -1,6 +1,6 @@
 import {
   FTECH_USER_REQUEST, FTECH_USER_SUCCESS, FTECH_USER_FAILURE, USER_LOGOUT_SUCCESS, USER_LOGOUT_FAILURE,
-  USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS
+  USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAILURE
 } from "../constants";
 
 const initialState = {
@@ -57,6 +57,7 @@ export default (state = initialState, { type, payload }) => {
         authenticating: false,
         authenticated: false
       }
+    case USER_REGISTER_FAILURE:
     case USER_LOGOUT_FAILURE: {
       return {
         ...state,

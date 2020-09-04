@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button, Card } from 'antd';
 
+import CardWrapper from "./sharedComponents/CardWrapper";
 import { registerAction } from "../modules/actions/user";
 
 const layout = {
@@ -32,7 +33,7 @@ const SignupForm = ({
   };
 
   return (
-    <Card style={{ width: 640, margin: "auto" }} title="Create Account">
+    <CardWrapper style={{ width: 640, margin: "auto" }} title="Create Account">
       <Form
         {...layout}
         name="basic"
@@ -83,7 +84,7 @@ const SignupForm = ({
           </Button>
         </Form.Item>
       </Form>
-    </Card>
+    </CardWrapper>
   );
 };
 

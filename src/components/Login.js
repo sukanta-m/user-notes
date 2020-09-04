@@ -2,14 +2,15 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Form, Input, Button, Checkbox, Card } from 'antd';
 
+import CardWrapper from "./sharedComponents/CardWrapper";
 import { login } from "../modules/actions/user";
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 4 },
+  wrapperCol: { span: 20 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 4, span: 20 },
 };
 
 const LoginForm = ({
@@ -32,7 +33,7 @@ const LoginForm = ({
   };
 
   return (
-    <Card style={{ width: 640, margin: "auto" }}>
+    <CardWrapper style={{ width: 640, margin: "auto" }} title="Come In">
       <Form
         {...layout}
         name="basic"
@@ -66,7 +67,7 @@ const LoginForm = ({
           </Button>
         </Form.Item>
       </Form>
-    </Card>
+    </CardWrapper>
   );
 };
 
