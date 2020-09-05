@@ -32,12 +32,13 @@ export const addNoteAction = params => {
       });
       return dispatch({type: ADD_NOTE_SUCCESS, payload: response.data})
     })
-    .catch(error => {
+    .catch(({response}) => {
+      const msg = response.data.errors;
       notification.error({
-        message: 'Failed to created',
+        message: msg,
         description: ''
       });
-      return dispatch({type: ADD_NOTE_FAILURE, payload: error});
+      return dispatch({type: ADD_NOTE_FAILURE, payload: msg});
     });
   }
 }
@@ -55,12 +56,13 @@ export const updateNoteAction = params => {
       });
       return dispatch({type: UPDATE_NOTE_SUCCESS, payload: response.data})
     })
-    .catch(error => {
+    .catch(({response}) => {
+      const msg = response.data.errors;
       notification.error({
-        message: 'Failed to update',
+        message: msg,
         description: ''
       });
-      dispatch({type: UPDATE_NOTE_FAILURE, payload: error});
+      dispatch({type: UPDATE_NOTE_FAILURE, payload: msg});
     });
   }
 }
@@ -76,12 +78,13 @@ export const deleteNoteAction = id => {
       });
       return dispatch({type: DELETE_NOTE_SUCCESS, payload: response.data})
     })
-    .catch(error => {
+    .catch(({response}) => {
+      const msg = response.data.errors;
       notification.error({
-        message: 'Failed to delete',
+        message: msg,
         description: ''
       });
-      return dispatch({type: DELETE_NOTE_FAILURE, payload: error});
+      return dispatch({type: DELETE_NOTE_FAILURE, payload: msg});
     });
   }
 }
