@@ -35,13 +35,16 @@ const CardItem = ({ note, user, onEdit, onDelete }) => {
     </Menu>
   );
   
+  const avatarSpan = window.isMobile ? 4 : (window.isTablet ? 3 : 1);
+  const contentSpan = window.isMobile ? 20 : (window.isTablet ? 21 : 23);
+
   return (
     <StyledCard isMobile={window.isMobile}>
       <Row>
-        <Col span={window.isMobile ? 4 : 1}>
+        <Col span={avatarSpan}>
           <Avatar size={window.isMobile ? "small" : "large"} icon={<UserOutlined />} />
         </Col>
-        <Col span={window.isMobile ? 20 : 23}>
+        <Col span={contentSpan}>
           <StyledMetaData>
             <div style={{display: "flex", flexDirection: "column"}}>
               <span>{`${firstName} ${lastName}`}</span>

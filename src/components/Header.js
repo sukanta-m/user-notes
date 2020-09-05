@@ -63,7 +63,7 @@ const StyledHeaderLayout = styled(HeaderLayout)`
   padding: 0;
   position: fixed;
   z-index: 1;
-  width: ${({collapsed, authenticated}) => collapsed ? "calc(100% - 80px)" : (authenticated ? "calc(100% - 200px)" : "100%")};
+  width: ${({collapsed, authenticated}) => authenticated ? (collapsed ? "calc(100% - 80px)" : "calc(100% - 200px)") : "100%"};
   display: flex;
   justify-content: space-between;
 `;
@@ -90,6 +90,8 @@ const StyledAddButton = styled(Button)`
   height: ${({isMobile}) => isMobile ? "32px" : "29px"};
   padding: ${({isMobile}) => isMobile ? "4px 7px" : "4px 15px"};
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 `;
 
 export default connect(state => ({

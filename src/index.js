@@ -18,6 +18,8 @@ window.isMobile = (function() {
   return check;
 })();
 
+window.isTablet = /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(.*touch))|kindle|playbook|silk|(puffin(?!.*(IP|AP|WP))))/.test(navigator.userAgent.toLowerCase());
+
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
