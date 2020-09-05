@@ -7,10 +7,10 @@ import {
  } from "../constants";
  import { notification } from "antd";
  
-export const fetchNotesAction = (tags, search = "") => {
+export const fetchNotesAction = (tags, search = "", page = 1) => {
   return dispatch => {
     dispatch({ type: FTECH_NOTES_REQUEST })
-    return fetchNotes(tags, search)
+    return fetchNotes(tags, search, page)
     .then(response => {
       dispatch(fetchTagsAction());
       return dispatch({type: FTECH_NOTES_SUCCESS, payload: response.data});
@@ -91,12 +91,9 @@ export const fetchTagsAction = () =>
   .then(response => dispatch({type: NOTE_TAGS_SUCCESS, payload: response}));
 
 export const toggleNoteModalAction = value => dispatch => dispatch({ type: TOGGLE_NOTE_MODAL, payload: value });
-export const updateFilterAction = filter => dispatch => {
-  dispatch(fetchNotesAction(filter.tags, filter.search));
-  return dispatch({ type: UPDATE_NOTES_FILTER, payload: filter });
-}
 
-export const updateSearchAction = filter => dispatch => {
-  dispatch(fetchNotesAction(filter.tags, filter.search));
+export const updateFilterAction = filter => dispatch => {
+  const { tags, search, page } = filter;
+  dispatch(fetchNotesAction(tags, search, page));
   return dispatch({ type: UPDATE_NOTES_FILTER, payload: filter });
 }

@@ -11,7 +11,8 @@ const initialState = {
   filter: {
     by: "authorByMe",
     tags: [],
-    search: ""
+    search: "",
+    page: 1
   }
 }
 
@@ -27,7 +28,8 @@ export default (state = initialState, { type, payload }) => {
     case FTECH_NOTES_SUCCESS:
       return {
         ...state,
-        lists: payload.data,
+        lists: payload.data.data,
+        total: payload.total,
         fetching: false
       }
 

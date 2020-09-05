@@ -22,7 +22,8 @@ const UserNotes = ({
   updateNote,
   deleteNote,
   creating,
-  fetching
+  fetching,
+  total
 }) => {
   const [editableNoteId, setEditabeNoteId] = useState();
   useEffect(() => {
@@ -59,7 +60,7 @@ const UserNotes = ({
   const note = notes.find(({id}) => parseInt(id, 10) === parseInt(editableNoteId, 10));
 
   return (
-    <div>
+    <div style={{minHeight: "100vh"}}>
       { notes.length === 0 && <Empty description="No notes found"/> }
       {showNoteModal && (
         <NoteForm
@@ -70,7 +71,7 @@ const UserNotes = ({
           note={note?.attributes || {}}
         />
       )}
-      {notes.length > 0 && <Notes notes={notes} onEdit={onEdit} onDelete={onDelete} />}
+      {notes.length > 0 && <Notes notes={notes} onEdit={onEdit} onDelete={onDelete} total={total} />}
     </div>
   )
 };
@@ -89,7 +90,8 @@ export default connect(state => ({
   notes: get(state, "notes.lists"),
   showNoteModal: get(state, "notes.showNoteModal", false),
   creating: get(state, "notes.creating"),
-  fetching: get(state, "notes.fetching")
+  fetching: get(state, "notes.fetching"),
+  total: get(state, "notes.total")
 }), {
   fetchNotes: fetchNotesAction,
   toogleNoteModal: toggleNoteModalAction,

@@ -11,6 +11,8 @@ This is a simple note storage application using Ruby on Rails for api service. F
 - User can search note by using search form.
 - User can search note by clicking tags.
 - User can logout from application by clicking *Log Out* link at the navbar.
+- Add pagination to notes page
+- Responsive (Mobile/Tablet) friendly view
 
 ## Technical Stack
 - react 16.13

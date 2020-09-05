@@ -10,7 +10,7 @@ import {
 } from '@ant-design/icons';
 import styled from "styled-components";
 
-import { toggleNoteModalAction, updateSearchAction } from "../modules/actions/notes";
+import { toggleNoteModalAction, updateFilterAction } from "../modules/actions/notes";
 import { logOutAction } from "../modules/actions/user";
 
 const { Header: HeaderLayout } = Layout;
@@ -99,5 +99,5 @@ export default connect(state => ({
 }), {
   toggleNoteModal: toggleNoteModalAction,
   logOut: logOutAction,
-  searchNote: updateSearchAction
+  searchNote: updateFilterAction
 })(Header);

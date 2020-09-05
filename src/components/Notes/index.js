@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { get } from "lodash";
 import styled from "styled-components";
 import CardItem from "./CardItem";
-import { Tag } from "antd";
+import { Tag, Pagination } from "antd";
 
 import { updateFilterAction } from "../../modules/actions/notes";
 
@@ -13,11 +13,16 @@ const NoteLists = ({
   onEdit,
   onDelete,
   filter,
-  updateFilter
+  updateFilter,
+  total = 0
 }) => {
   const onTagClose = value => {
     const updatedFilterTags = filter.tags.filter(tag => tag !== value);
     updateFilter({...filter, tags: updatedFilterTags});
+  }
+
+  const onPageChange = page => {
+    updateFilter({...filter, page});
   }
 
   return (
@@ -33,6 +38,16 @@ const NoteLists = ({
         const noteData = note.attributes;
         return <CardItem note={noteData} user={user} onEdit={onEdit} onDelete={onDelete} />
       })}
+      {!!total && <StyledPaginationWrapper>
+        <Pagination
+          current={filter.page}
+          defaultCurrent={1}
+          total={total}
+          onChange={onPageChange}
+          showSizeChanger={false}
+          responsive
+        />
+      </StyledPaginationWrapper>}
     </div>
   )
 };
@@ -44,6 +59,11 @@ margin-bottom: 10px;
 
 const StyledFilterWrapper = styled.div`
   margin-bottom: 10px;
+`;
+const StyledPaginationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export default connect(state => ({
